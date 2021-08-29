@@ -1,0 +1,1 @@
+<view class="data-v-5b0915de"><map class="map data-v-5b0915de" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" data-event-opts="{{[['regionchange',[['regionchange',['$event']]]],['markertap',[['markertap',['$event']]]]]}}" bindregionchange="__e" bindmarkertap="__e"></map></view>

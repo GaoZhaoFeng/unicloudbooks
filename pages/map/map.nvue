@@ -1,0 +1,83 @@
+<template>
+	<view>
+		<map :latitude="latitude" :longitude="longitude" class="map" 
+		@regionchange="regionchange"
+		:markers="markers" @markertap="markertap"></map>
+	</view>
+</template>
+
+<script>
+	import cloudApi from '../../common/cloudAPi.js';
+	export default {
+		data() {
+			return {
+				latitude:'',
+				longitude:'',
+				markers:[],
+				studys:[]
+			}
+		},
+		onLoad() {
+			uni.getLocation({
+				success: (res) => {
+					this.latitude = res.latitude,
+					this.longitude = res.longitude;
+					this.getStudysList()
+				}
+			});
+			
+		},
+		methods: {
+			//移动地图时，获取里当前移动中心点最近的书房
+			regionchange(event){	
+				if(event.causedBy == "drag") {
+					const { centerLocation } = event.detail;
+					const { latitude,longitude } = centerLocation;
+					this.latitude = latitude;
+					this.longitude = longitude;
+					this.getStudysList()
+				}
+			},
+			//markers点击
+			markertap(event){
+				const currentStudyId = this.studys[event.detail.markerId]._id;
+				// uni.navigateTo({
+				// 	url:`../add-study/add-study?id=${currentStudyId}`
+				// })
+			},
+			//生成markers锚点
+			getStudysList(){
+				cloudApi.call({
+					name:'studys',
+					data:{
+						action:'getList',
+						data:{
+							latitude:this.latitude,
+							longitude:this.longitude
+						}
+					},
+					success:res => {
+						const { result } = res ;
+						this.studys = result;
+						result.forEach((row,index) => {
+							this.markers.push({
+								id:index,
+								latitude:row.geopoint.coordinates[1],
+								longitude:row.geopoint.coordinates[0],
+								title:row.name,
+								iconPath:require('../../static/xq_02.png')
+							})
+						})
+					}
+				})
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+.map{
+	width: 100vw;
+	height: 100vh;
+}
+</style>

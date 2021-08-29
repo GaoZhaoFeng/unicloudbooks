@@ -1,0 +1,65 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	    ,{
+            "path" : "pages/map/map",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/xq/xq",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/add-study/add-study",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新建书房",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar":{
+		"list":[
+			{
+				"pagePath":"pages/mine/mine",
+				"iconPath":"static/mine_01.png",
+				"selectedIconPath":"static/mine_02.png",
+				"text":"我的"
+			},
+			{
+				"pagePath":"pages/xq/xq",
+				"iconPath":"static/xq_01.png",
+				"selectedIconPath":"static/xq_02.png",
+				"text":"星球"
+			},
+			{
+				"pagePath":"pages/map/map",
+				"iconPath":"static/map_01.png",
+				"selectedIconPath":"static/map_02.png",
+				"text":"地图"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "dnmscourse",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

@@ -1,7 +1,7 @@
 <template>
 	<view class="study">
 		<view class="wrap">
-			<input type="text" v-model="studyName" placeholder="请输入书房名称111"/>
+			<input type="text" v-model="studyName" placeholder="请输入书房名称"/>
 			<view class="select-address" @click="selectAddress">
 				<text>{{selectAddressTip}}</text>
 				<uni-icons type="arrowright" size="30"></uni-icons>

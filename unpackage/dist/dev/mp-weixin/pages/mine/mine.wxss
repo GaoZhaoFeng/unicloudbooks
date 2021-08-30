@@ -25,17 +25,25 @@
 /* 透明度 */
 /* 文章场景相关 */
 .page.data-v-dcbcfe34 {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .mg-b.data-v-dcbcfe34 {
   margin-bottom: 10rpx;
+}
+.no-more.data-v-dcbcfe34 {
+  text-align: center;
+  width: 100%;
+  font-size: 32rpx;
+  color: #999;
 }
 .mg-b2.data-v-dcbcfe34 {
   margin-bottom: 20rpx;
 }
 .book-list.data-v-dcbcfe34 {
   padding: 20rpx;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .address-img.data-v-dcbcfe34 {
   width: 100%;

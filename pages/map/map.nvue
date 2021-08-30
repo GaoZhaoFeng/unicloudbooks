@@ -17,7 +17,7 @@
 				studys:[]
 			}
 		},
-		onLoad() {
+		onShow() {
 			uni.getLocation({
 				success: (res) => {
 					this.latitude = res.latitude,

@@ -27,6 +27,9 @@
 				</view>
 			</uni-card>
 		</view>
+		<view class="no-more mg-b2" v-if="noMore">
+			没有更多了呢...
+		</view>
 	</view>
 </template>
 
@@ -38,7 +41,13 @@
 			return {
 				userInfo: {},
 				studyInfoList:[],
-				
+				page:1,
+				pageSize:10
+			}
+		},
+		computed:{
+			noMore(){
+				return this.studyInfoList.length && (this.pageSize > this.studyInfoList.length)
 			}
 		},
 		onLoad() {
@@ -46,6 +55,12 @@
 		},
 		onShow() {
 			this.userInfo.token && this.getStudyList()
+		},
+		onReachBottom() {
+			if(!this.noMore){
+				this.pageSize+=10;
+				this.getStudyList()
+			}
 		},
 		methods: {
 			//更多操作
@@ -129,7 +144,11 @@
 				cloudApi.call({
 					name:'studys',
 					data:{
-						action:'get'
+						action:'get',
+						data:{
+							page:this.page,
+							pageSize:this.pageSize
+						}
 					},
 					success:res => {
 						this.studyInfoList = res.result
@@ -147,7 +166,12 @@
 	.mg-b {
 		margin-bottom: 10rpx;
 	}
-
+	.no-more{
+		text-align: center;
+		width: 100%;
+		font-size: 32rpx;
+		color:#999
+	}
 	.mg-b2 {
 		margin-bottom: 20rpx;
 	}

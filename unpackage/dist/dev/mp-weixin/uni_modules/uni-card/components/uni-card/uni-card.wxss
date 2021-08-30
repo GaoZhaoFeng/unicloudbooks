@@ -31,7 +31,8 @@
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   margin: 12px 15px;
   background-color: #ffffff;
   position: relative;
@@ -55,7 +56,8 @@
   right: 0;
   border: 1px solid #c8c7cc;
   border-radius: 10px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 200%;
   height: 200%;
   -webkit-transform: scale(0.5);
@@ -76,7 +78,8 @@
   top: 0;
   right: 0;
   border-bottom: 1px solid #c8c7cc;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 200%;
   height: 200%;
   -webkit-transform: scale(0.5);
@@ -97,7 +100,8 @@
   top: 0;
   right: 0;
   border-top: 1px solid #c8c7cc;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 200%;
   height: 200%;
   -webkit-transform: scale(0.5);
@@ -306,7 +310,8 @@
 }
 .uni-card--shadow.data-v-19622063 {
   position: relative;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 .uni-card--full.data-v-19622063 {
   margin: 0;

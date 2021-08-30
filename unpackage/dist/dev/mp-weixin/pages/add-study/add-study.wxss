@@ -26,7 +26,8 @@
 /* 文章场景相关 */
 .study.data-v-4b4b2342 {
   padding: 20rpx;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .study .wrap.data-v-4b4b2342 {
   border-radius: 10rpx;

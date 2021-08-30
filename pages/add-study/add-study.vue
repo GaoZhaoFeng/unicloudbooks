@@ -1,7 +1,7 @@
 <template>
 	<view class="study">
 		<view class="wrap">
-			<input type="text" v-model="studyName" placeholder="请输入书房名称"/>
+			<input type="text" v-model="studyName" placeholder="请输入书房名称111"/>
 			<view class="select-address" @click="selectAddress">
 				<text>{{selectAddressTip}}</text>
 				<uni-icons type="arrowright" size="30"></uni-icons>
@@ -20,7 +20,11 @@
 			return {
 				studyName:"",
 				selectAddressTip:'选择地址',
-				address:{},
+				address:{
+					address:'',
+					longitude:'',
+					latitude:''
+				},
 				btnText:'保存',
 				id:''
 			}
@@ -63,7 +67,9 @@
 					latitude:this.address.latitude,
 					longitude:this.address.longitude,
 					success: (res) => {
-						this.address = res;
+						this.address.latitude = res.latitude;
+						this.address.longitude = res.longitude;
+						this.address.address = res.address;
 						this.selectAddressTip = res.address?res.address:'选择地址'
 					}
 				})

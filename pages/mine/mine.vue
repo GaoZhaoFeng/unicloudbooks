@@ -4,13 +4,10 @@
 			<view class="img mg-b2">
 				<image :src="userInfo.avatarUrl" mode=""></image>
 			</view>
-			<view class="nickname mg-b2">
+			<view class="nickname mg-b2" v-if="userInfo.nickname">
 				{{userInfo.nickname}}
 			</view>
 			<text class="text">更新微信信息</text>
-		</view>
-		<view class="btn-add" @click="btnCreateStudy" v-if="!studyInfoList.length">
-			新建书房
 		</view>
 		<view class="book-list">
 			<uni-card
@@ -18,14 +15,20 @@
 			:key="index"
 			is-full="true" :title="item.name" 
 			:thumbnail="item.userInfo.avatarUrl"
+			@click="toAddBooks(item)"
 			:extra="`${item.totalStudys}本`" >
+			
 			    <image :src="'http://api.map.baidu.com/staticimage/v2?ak=6ae2e0c384df712820d0a2fa4ddcffc6&zoom=17&coordtype=gcj02ll&center='+item.geopoint.coordinates[0]+','+item.geopoint.coordinates[1]" 
 				class="address-img"
 				></image>
-				<view class="operate" @click="more(item._id)">
+				<view class="operate" @click.stop="more(item._id)">
 					更多
 				</view>
 			</uni-card>
+		</view>
+		<view class="add-btn" @click="btnCreateStudy">
+			<uni-icons type="plus-filled" color="#000" size="50">
+			</uni-icons>
 		</view>
 		<view class="no-more mg-b2" v-if="noMore">
 			没有更多了呢...
@@ -63,6 +66,11 @@
 			}
 		},
 		methods: {
+			toAddBooks({_id,name}){
+				uni.navigateTo({
+					url:`/pages/books/books?id=${_id}&name=${name}`
+				})
+			},
 			//更多操作
 			more(_id){
 				uni.showActionSheet({
@@ -162,6 +170,13 @@
 <style lang="scss" scoped>
     .page{
 		box-sizing: border-box;
+		position: relative;
+		.add-btn{
+			position: fixed;
+			bottom: 30rpx;
+			right: 30rpx;
+			z-index: 999;
+		}
 	}
 	.mg-b {
 		margin-bottom: 10rpx;

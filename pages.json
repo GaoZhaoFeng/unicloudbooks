@@ -33,6 +33,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/books/books",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar":{
 		"list":[

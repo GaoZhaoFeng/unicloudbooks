@@ -104,6 +104,9 @@ try {
   components = {
     uniCard: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-card/components/uni-card/uni-card */ "uni_modules/uni-card/components/uni-card/uni-card").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-card/components/uni-card/uni-card.vue */ 54))
+    },
+    uniIcons: function() {
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 61))
     }
   }
 } catch (e) {
@@ -194,6 +197,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/cloudAPi.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -229,8 +235,13 @@ var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/clou
 //
 //
 //
-var amapFile = __webpack_require__(/*! ../../common/amap-wx.js */ 26);var _default = { data: function data() {return { userInfo: {}, studyInfoList: [], page: 1, pageSize: 10 };}, computed: { noMore: function noMore() {return this.studyInfoList.length && this.pageSize > this.studyInfoList.length;} }, onLoad: function onLoad() {this.getUserInfo();}, onShow: function onShow() {this.userInfo.token && this.getStudyList();}, onReachBottom: function onReachBottom() {if (!this.noMore) {this.pageSize += 10;this.getStudyList();}}, methods: { //更多操作
-    more: function more(_id) {var _this = this;uni.showActionSheet({ itemList: ['删除', '编辑'], itemColor: '#4CD964', success: function success(res) {var tapIndex = res.tapIndex;if (tapIndex == 0) {
+//
+//
+//
+var amapFile = __webpack_require__(/*! ../../common/amap-wx.js */ 26);var _default = { data: function data() {return { userInfo: {}, studyInfoList: [], page: 1, pageSize: 10 };}, computed: { noMore: function noMore() {return this.studyInfoList.length && this.pageSize > this.studyInfoList.length;} }, onLoad: function onLoad() {this.getUserInfo();}, onShow: function onShow() {this.userInfo.token && this.getStudyList();}, onReachBottom: function onReachBottom() {if (!this.noMore) {this.pageSize += 10;this.getStudyList();}}, methods: { toAddBooks: function toAddBooks(_ref) {var _id = _ref._id,name = _ref.name;uni.navigateTo({ url: "/pages/books/books?id=".concat(_id, "&name=").concat(name) });}, //更多操作
+    more: function more(_id) {var _this = this;uni.showActionSheet({ itemList: ['删除', '编辑'], itemColor: '#4CD964', success: function success(res) {var
+          tapIndex = res.tapIndex;
+          if (tapIndex == 0) {
             _cloudAPi.default.call({
               name: 'studys',
               data: {

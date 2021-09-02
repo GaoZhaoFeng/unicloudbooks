@@ -27,6 +27,13 @@
 .page.data-v-dcbcfe34 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  position: relative;
+}
+.page .add-btn.data-v-dcbcfe34 {
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+  z-index: 999;
 }
 .mg-b.data-v-dcbcfe34 {
   margin-bottom: 10rpx;

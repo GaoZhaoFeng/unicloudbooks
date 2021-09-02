@@ -2,6 +2,7 @@
 	<view>
 		<map :latitude="latitude" :longitude="longitude" class="map" 
 		@regionchange="regionchange"
+		:show-location="true"
 		:markers="markers" @markertap="markertap"></map>
 	</view>
 </template>
@@ -41,9 +42,11 @@
 			//markers点击
 			markertap(event){
 				const currentStudyId = this.studys[event.detail.markerId]._id;
-				// uni.navigateTo({
-				// 	url:`../add-study/add-study?id=${currentStudyId}`
-				// })
+				console.log(currentStudyId,'llll')
+				let { _id,name }= this.studys.find(row=>row._id == currentStudyId);
+				uni.navigateTo({
+					url:`/pages/books/books?id=${_id}&name=${name}`
+				})
 			},
 			//生成markers锚点
 			getStudysList(){
@@ -58,6 +61,7 @@
 					},
 					success:res => {
 						const { result } = res ;
+						this.markers = []
 						this.studys = result;
 						result.forEach((row,index) => {
 							this.markers.push({

@@ -3,7 +3,8 @@
     "pages/mine/mine",
     "pages/map/map",
     "pages/xq/xq",
-    "pages/add-study/add-study"
+    "pages/add-study/add-study",
+    "pages/books/books"
   ],
   "subPackages": [],
   "window": {
@@ -39,6 +40,5 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

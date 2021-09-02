@@ -174,7 +174,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/cloudAPi.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
 //
 //
 //
@@ -217,14 +219,16 @@ var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/clou
 //
 var _default = { data: function data() {return { latitude: '', longitude: '', markers: [], studys: [] };}, onShow: function onShow() {var _this = this;uni.getLocation({ success: function success(res) {_this.latitude = res.latitude, _this.longitude = res.longitude;_this.getStudysList();} });}, methods: { //移动地图时，获取里当前移动中心点最近的书房
     regionchange: function regionchange(event) {if (event.causedBy == "drag") {var centerLocation = event.detail.centerLocation;var latitude = centerLocation.latitude,longitude = centerLocation.longitude;this.latitude = latitude;this.longitude = longitude;this.getStudysList();}}, //markers点击
-    markertap: function markertap(event) {var currentStudyId = this.studys[event.detail.markerId]._id; // uni.navigateTo({
-      // 	url:`../add-study/add-study?id=${currentStudyId}`
-      // })
-    }, //生成markers锚点
-    getStudysList: function getStudysList() {var _this2 = this;_cloudAPi.default.call({ name: 'studys', data: { action: 'getList', data: { latitude: this.latitude, longitude: this.longitude } },
+    markertap: function markertap(event) {var currentStudyId = this.studys[event.detail.markerId]._id;console.log(currentStudyId, 'llll');var _this$studys$find = this.studys.find(function (row) {return row._id == currentStudyId;}),_id = _this$studys$find._id,name = _this$studys$find.name;uni.navigateTo({ url: "/pages/books/books?id=".concat(_id, "&name=").concat(name) });}, //生成markers锚点
+    getStudysList: function getStudysList() {var _this2 = this;_cloudAPi.default.call({ name: 'studys', data: { action: 'getList',
+          data: {
+            latitude: this.latitude,
+            longitude: this.longitude } },
+
 
         success: function success(res) {var
           result = res.result;
+          _this2.markers = [];
           _this2.studys = result;
           result.forEach(function (row, index) {
             _this2.markers.push({

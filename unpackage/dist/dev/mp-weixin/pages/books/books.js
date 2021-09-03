@@ -230,7 +230,8 @@ var operate = function operate() {__webpack_require__.e(/*! require.ensure | com
     9787557021115
     9787107168024
     */ //添加书本
-    btnScan: function btnScan() {var _this = this;uni.scanCode({
+    btnScan: function btnScan() {var _this = this;if (this.deleteShow) return;
+      uni.scanCode({
         onlyFromCamera: false,
         success: function success(res) {var
           result = res.result;
@@ -303,7 +304,8 @@ var operate = function operate() {__webpack_require__.e(/*! require.ensure | com
         data: {
           data: {
             action: 'delete',
-            _id: _id } },
+            _id: _id,
+            id: this.id } },
 
 
         success: function success(res) {

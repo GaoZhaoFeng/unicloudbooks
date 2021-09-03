@@ -66,6 +66,7 @@
 			*/
 		   //添加书本
 			btnScan() {
+				if(this.deleteShow) return;
 				uni.scanCode({
 					onlyFromCamera:false,
 					success: (res) => {
@@ -139,7 +140,8 @@
 					data: {
 						data: {
 							action: 'delete',
-							_id
+							_id,
+							id:this.id
 						}
 					},
 					success: res => {

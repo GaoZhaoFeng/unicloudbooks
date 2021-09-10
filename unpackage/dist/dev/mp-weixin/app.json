@@ -4,7 +4,8 @@
     "pages/map/map",
     "pages/xq/xq",
     "pages/add-study/add-study",
-    "pages/books/books"
+    "pages/books/books",
+    "pages/bookDetail/bookDetail"
   ],
   "subPackages": [],
   "window": {
@@ -23,9 +24,9 @@
       },
       {
         "pagePath": "pages/xq/xq",
-        "iconPath": "static/xq_01.png",
-        "selectedIconPath": "static/xq_02.png",
-        "text": "星球"
+        "iconPath": "static/book_01.png",
+        "selectedIconPath": "static/book_02.png",
+        "text": "搜书"
       },
       {
         "pagePath": "pages/map/map",

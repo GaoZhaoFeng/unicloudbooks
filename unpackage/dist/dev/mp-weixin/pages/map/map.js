@@ -236,7 +236,7 @@ var _default = { data: function data() {return { latitude: '', longitude: '', ma
               latitude: row.geopoint.coordinates[1],
               longitude: row.geopoint.coordinates[0],
               title: row.name,
-              iconPath: __webpack_require__(/*! ../../static/xq_02.png */ 35) });
+              iconPath: __webpack_require__(/*! ../../static/books.png */ 35) });
 
           });
         } });

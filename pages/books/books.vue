@@ -1,12 +1,20 @@
 <template>
 	<view class="index">
 		<operate v-if="operateShow" @dismiss="dismiss" @selected="selected" />
-		<view class="book-list">
-			<view class="img" v-for="(bookItem,index) in bookList" :key="index" @click="toBookDetail(bookItem)">
-				<image :src="bookItem.coverUrl" mode=""></image>
-				<view class="del" v-if="deleteShow" @click.stop="deleteOperate(bookItem._id)">
-					<uni-icons type="closeempty" color="red" size="30">
-					</uni-icons>
+		<view class="" v-if="pageShow">
+			<view class="book-list" v-if="bookList.length">
+				<view class="img" v-for="(bookItem,index) in bookList" :key="index" @click="toBookDetail(bookItem)">
+					<image :src="bookItem.coverUrl" mode=""></image>
+					<view class="del" v-if="deleteShow" @click.stop="deleteOperate(bookItem._id)">
+						<uni-icons type="closeempty" color="red" size="30">
+						</uni-icons>
+					</view>
+				</view>
+			</view>
+			<view class="img-empty" v-else>
+				<image src="../../static/empty.png" mode=""></image>
+				<view class="tip">
+					暂无数据
 				</view>
 			</view>
 		</view>
@@ -41,7 +49,8 @@
 				id: '',
 				operateShow: false,
 				bookList:[],
-				deleteShow:false
+				deleteShow:false,
+				pageShow:false
 			}
 		},
 		onLoad(ops) {
@@ -57,7 +66,9 @@
 		},
 		methods: {
 			toBookDetail(item){
-				console.log(item,'item')
+				uni.navigateTo({
+					url:'../bookDetail/bookDetail?id='+item._id
+				})
 			},
 			//
 			/*
@@ -129,6 +140,7 @@
 						}
 					},
 					success:res => {
+						this.pageShow = true;
 						this.bookList = res.result;
 					}
 				})
@@ -186,6 +198,15 @@
 			.img:nth-child(3n+3){
 				margin-right: 0;
 			}
+		}
+	}
+	.img-empty {
+		margin-top: 200rpx;
+		text-align: center;
+	
+		image {
+			width: 400rpx;
+			height: 300rpx;
 		}
 	}
 	.wrap {

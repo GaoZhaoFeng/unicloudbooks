@@ -10,7 +10,7 @@
             "path" : "pages/map/map",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "地图",
                 "enablePullDownRefresh": false
             }
             
@@ -19,7 +19,7 @@
             "path" : "pages/xq/xq",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "搜书",
                 "enablePullDownRefresh": false
             }
             
@@ -42,6 +42,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/bookDetail/bookDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "书本详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar":{
 		"list":[
@@ -53,9 +62,9 @@
 			},
 			{
 				"pagePath":"pages/xq/xq",
-				"iconPath":"static/xq_01.png",
-				"selectedIconPath":"static/xq_02.png",
-				"text":"星球"
+				"iconPath":"static/book_01.png",
+				"selectedIconPath":"static/book_02.png",
+				"text":"搜书"
 			},
 			{
 				"pagePath":"pages/map/map",

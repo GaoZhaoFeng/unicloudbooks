@@ -60,8 +60,10 @@ exports.main = async (event, context) => {
 			} else {
 				reqData = dbResult.data[0];
 				delete reqData._id;
+				delete reqData.openid;
 				reqData.createTime = createTime;
-				reqData.studyId = data.id;  //因为是获取书本数据库有没有当前这本书，有的话，获取之后把原来的书房覆盖成当前书房即可添加
+				reqData.openid = openid;
+				reqData.studyId = data.id;  //因为是获取书本数据库有没有当前这本书，有的话之前是有书房id，获取之后把原来的书房覆盖成当前书房即可添加
 				await db.collection('books').add(reqData);
 				handerStudyTotal(data.id)
 				return {}
@@ -72,7 +74,7 @@ exports.main = async (event, context) => {
 			handerStudyTotal(data.id)
 			return res;
 			break;
-		case 'getbookList':
+		case 'getbookList': //获取当前书房全部书本
 			res = await db.collection('books').where({
 				studyId: data._id
 			}).field({
@@ -80,6 +82,32 @@ exports.main = async (event, context) => {
 			}).limit(100).get()
 			return res.data;
 			break;
+		case 'getAllBookList':  //获取books数据库里面全部的书本
+			let page = 1;
+			let pageSize = 10;
+			let skip;
+			if(data.page){
+				page = data.page;
+				pageSize = data.pageSize;
+			}
+			skip = (page-1)*pageSize;
+			res = await db.collection('books').field({openid:false}).skip(skip).limit(pageSize).get();
+			let { total } = await db.collection('books').count()
+			return {
+				list:res.data,
+				total
+			};
+			break;
+		case 'search':  //搜书时
+			res = await db.collection('books').where({
+				title:new RegExp(data.bookName,'i')
+			}).get()
+			return res.data
+			break
+		case 'detail': //获取当前书本
+			res = await db.collection('books').doc(data._id).field({openid:false}).get();
+			return res.data;
+			break
 	}
 	//书本的增删 统一修改书房的书本数量
 	async function handerStudyTotal(_id) {

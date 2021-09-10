@@ -69,7 +69,7 @@
 								latitude:row.geopoint.coordinates[1],
 								longitude:row.geopoint.coordinates[0],
 								title:row.name,
-								iconPath:require('../../static/xq_02.png')
+								iconPath:require('../../static/books.png')
 							})
 						})
 					}

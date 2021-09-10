@@ -194,6 +194,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
 var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/cloudAPi.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -225,17 +233,20 @@ var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/clou
 //
 //
 //
-var operate = function operate() {__webpack_require__.e(/*! require.ensure | components/operate */ "components/operate").then((function () {return resolve(__webpack_require__(/*! ../../components/operate.vue */ 82));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { operate: operate }, data: function data() {return { id: '', operateShow: false, bookList: [], deleteShow: false };}, onLoad: function onLoad(ops) {var id = ops.id,name = ops.name;this.id = id;uni.setNavigationBarTitle({ title: name });this.getBookList();}, methods: { toBookDetail: function toBookDetail(item) {console.log(item, 'item');}, //
+//
+//
+//
+//
+//
+//
+//
+//
+var operate = function operate() {__webpack_require__.e(/*! require.ensure | components/operate */ "components/operate").then((function () {return resolve(__webpack_require__(/*! ../../components/operate.vue */ 82));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { operate: operate }, data: function data() {return { id: '', operateShow: false, bookList: [], deleteShow: false, pageShow: false };}, onLoad: function onLoad(ops) {var id = ops.id,name = ops.name;this.id = id;uni.setNavigationBarTitle({ title: name });this.getBookList();}, methods: { toBookDetail: function toBookDetail(item) {uni.navigateTo({ url: '../bookDetail/bookDetail?id=' + item._id });}, //
     /*
     9787557021115
     9787107168024
     */ //添加书本
-    btnScan: function btnScan() {var _this = this;if (this.deleteShow) return;
-      uni.scanCode({
-        onlyFromCamera: false,
-        success: function success(res) {var
-          result = res.result;
-          _cloudAPi.default.call({
+    btnScan: function btnScan() {var _this = this;if (this.deleteShow) return;uni.scanCode({ onlyFromCamera: false, success: function success(res) {var result = res.result;_cloudAPi.default.call({
             name: 'isbn',
             data: {
               data: {
@@ -293,6 +304,7 @@ var operate = function operate() {__webpack_require__.e(/*! require.ensure | com
 
 
         success: function success(res) {
+          _this2.pageShow = true;
           _this2.bookList = res.result;
         } });
 

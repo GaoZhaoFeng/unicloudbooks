@@ -29,6 +29,12 @@
           "pathName": "pages/books/books",
           "query": "id=6128a0d19b33ed000155d947",
           "scene": null
+        },
+        {
+          "name": "pages/xq/xq",
+          "pathName": "pages/xq/xq",
+          "query": "",
+          "scene": null
         }
       ]
     }

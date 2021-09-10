@@ -226,9 +226,10 @@ var _cloudAPi = _interopRequireDefault(__webpack_require__(/*! ../../common/clou
 //
 //
 //
-var _default = { data: function data() {return { pageShow: false, bookList: [], bookName: '', total: 0, pageSize: 20, scrollShow: false };}, computed: { notMore: function notMore() {return this.bookList.length && this.bookList.length == this.total;} }, onShow: function onShow() {this.bookName = '';this.getBookList();}, //监听页面滚动 显示返回顶部图片
+var _default = { data: function data() {return { pageShow: false, bookList: [], bookName: '', total: 0, pageSize: 20, scrollShow: false };}, computed: { notMore: function notMore() {return this.bookList.length && this.bookList.length == this.total;} }, onShow: function onShow() {this.bookName = '';this.bookList = [];this.getBookList();}, //监听页面滚动 显示返回顶部图片
   onPageScroll: function onPageScroll(e) {this.scrollShow = e.scrollTop > 300 ? true : false;}, //触底加载更多
-  onReachBottom: function onReachBottom() {if (!this.notMore) {this.pageSize += 10;this.getBookList();}}, methods: { toBookDetail: function toBookDetail(item) {uni.navigateTo({ url: '../bookDetail/bookDetail?id=' + item._id });}, //返回顶部
+  onReachBottom: function onReachBottom() {if (!this.notMore) {this.pageSize += 10;this.getBookList();}}, methods: { toBookDetail: function toBookDetail(item) {uni.navigateTo({ url: '../bookDetail/bookDetail?id=' + item._id });},
+    //返回顶部
     scrollTop: function scrollTop() {
       uni.pageScrollTo({
         scrollTop: 0 });

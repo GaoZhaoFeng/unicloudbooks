@@ -54,6 +54,7 @@
 		},
 		onShow() {
 			this.bookName = '';
+			this.bookList = []
 			this.getBookList()
 		},
 		//监听页面滚动 显示返回顶部图片

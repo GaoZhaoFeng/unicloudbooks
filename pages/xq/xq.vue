@@ -1,12 +1,6 @@
 <template>
 	<view class="index">
 		<view class="" v-if="pageShow">
-			<view class="img-empty" v-if="!bookList.length">
-				<image src="../../static/empty.png" mode=""></image>
-				<view class="tip">
-					暂无数据
-				</view>
-			</view>
 			<view class="search">
 				<uni-easyinput suffixIcon="search" v-model="bookName" 
 				trim="all"
@@ -17,6 +11,13 @@
 				@confirm='onClick'>
 				</uni-easyinput>
 			</view>
+			<view class="img-empty" v-if="!bookList.length">
+				<image src="../../static/empty.png" mode=""></image>
+				<view class="tip">
+					暂无数据
+				</view>
+			</view>
+			
 			<view class="book-list" v-if="bookList.length">
 				<view class="img" v-for="(bookItem,index) in bookList" :key="index" @click="toBookDetail(bookItem)">
 					<image :src="bookItem.coverUrl" mode=""></image>

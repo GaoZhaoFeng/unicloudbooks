@@ -11,7 +11,7 @@
 				@confirm='onClick'>
 				</uni-easyinput>
 			</view>
-			<view class="img-empty" v-if="!bookList.length">
+			<view class="img-empty" v-if="emptyShow">
 				<image src="../../static/empty.png" mode=""></image>
 				<view class="tip">
 					暂无数据
@@ -44,7 +44,8 @@
 				bookName: '',
 				total: 0,
 				pageSize: 20,
-				scrollShow:false
+				scrollShow:false,
+				emptyShow:false,
 			}
 		},
 		computed: {
@@ -113,6 +114,7 @@
 						this.pageShow = true;
 						this.bookList = res.result.list;
 						this.total = res.result.total
+						this.emptyShow = this.bookList.length?false:true
 					}
 				})
 			}
